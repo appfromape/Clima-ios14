@@ -35,11 +35,11 @@
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="location.viewfinder" catalog="system"/>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜尋" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-2X-py0">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜尋你想要查的城市" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-2X-py0">
                                                 <rect key="frame" x="50" y="0.0" width="264" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJm-JA-cSZ">
                                                 <rect key="frame" x="324" y="0.0" width="40" height="40"/>
@@ -49,6 +49,9 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="magnifyingglass" catalog="system"/>
+                                                <connections>
+                                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eY2-Jl-Czd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -112,6 +115,7 @@
                     <connections>
                         <outlet property="cityLable" destination="BRS-B9-Wug" id="QMB-Hu-iyg"/>
                         <outlet property="conditionImageView" destination="aQe-rH-8nY" id="Jfr-a9-pi9"/>
+                        <outlet property="searchTextFiled" destination="hpz-2X-py0" id="GHI-79-NgN"/>
                         <outlet property="tempLable" destination="i1t-uc-GXh" id="Vj7-bs-ECa"/>
                     </connections>
                 </viewController>
