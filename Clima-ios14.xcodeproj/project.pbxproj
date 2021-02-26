@@ -56,15 +56,39 @@
 		A0AE722A25E8B917006BC6BD /* Clima-ios14 */ = {
 			isa = PBXGroup;
 			children = (
+				A0AE724025E8B99C006BC6BD /* Model */,
 				A0AE722B25E8B917006BC6BD /* AppDelegate.swift */,
 				A0AE722D25E8B917006BC6BD /* SceneDelegate.swift */,
-				A0AE722F25E8B917006BC6BD /* ViewController.swift */,
-				A0AE723125E8B917006BC6BD /* Main.storyboard */,
+				A0AE724225E8B9C6006BC6BD /* Controller */,
+				A0AE724125E8B9AF006BC6BD /* View */,
 				A0AE723425E8B918006BC6BD /* Assets.xcassets */,
 				A0AE723625E8B918006BC6BD /* LaunchScreen.storyboard */,
 				A0AE723925E8B918006BC6BD /* Info.plist */,
 			);
 			path = "Clima-ios14";
+			sourceTree = "<group>";
+		};
+		A0AE724025E8B99C006BC6BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0AE724125E8B9AF006BC6BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0AE723125E8B917006BC6BD /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0AE724225E8B9C6006BC6BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A0AE722F25E8B917006BC6BD /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
