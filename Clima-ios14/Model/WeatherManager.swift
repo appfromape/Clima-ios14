@@ -7,34 +7,72 @@
 
 import Foundation
 
+protocol WeatherManergerDelegate {
+    func didUpdateWeather(weather: WeatherModel)
+}
+
 struct WeatherManerger {
     
     let appid = "put your openweathermap's appid here"
+    
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid="
     
+    var delegate: WeatherManergerDelegate?
+    
     func fetchWeather(cityName: String) {
-        let urlStr = "\(weatherURL)\(appid)&q=\(cityName)"
+        let urlStr = "\(weatherURL)\(appid)&q=\(cityName)&units=metric"
         performRequest(urlStr: urlStr)
     }
     
     func performRequest(urlStr: String) {
         if let url = URL(string: urlStr) {
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url, completionHandler: handle(data: response: error: ))
+            //            let task = session.dataTask(with: url, completionHandler: handle(data: response: error: ))
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                if let safeDate = data {
+//                    let dataString = String(data: safeDate, encoding: .utf8)
+//                    print(dataString!)
+                    if let weather = parseJSON(weatherData: safeDate) {
+                        delegate?.didUpdateWeather(weather: weather)
+                    }
+                }
+            }
             task.resume()
         }
     }
     
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if error != nil {
-            print(error!)
-            return
-        }
+    func parseJSON(weatherData: Data) -> WeatherModel? {
         
-        if let safeDate = data {
-            let dataString = String(data: safeDate, encoding: .utf8)
-            print(dataString!)
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+            let temp = decodedData.main.temp
+            let id = decodedData.weather[0].id
+            let name = decodedData.name
+            
+            let weather = WeatherModel(conditionId: id, cityName: name, temp: temp)
+            return weather
+        } catch {
+            print(error)
+            return nil
         }
     }
+    
+    //    func handle(data: Data?, response: URLResponse?, error: Error?) {
+    //        if error != nil {
+    //            print(error!)
+    //            return
+    //        }
+    //
+    //        if let safeDate = data {
+    //            let dataString = String(data: safeDate, encoding: .utf8)
+    //            print(dataString!)
+    //        }
+    //    }
     
 }

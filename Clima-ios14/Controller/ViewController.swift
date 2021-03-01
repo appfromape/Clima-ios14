@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, WeatherManergerDelegate {
     
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var tempLable: UILabel!
@@ -19,9 +19,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        weatherManerger.delegate = self
         searchTextFiled.delegate = self
     }
-
+    
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextFiled.endEditing(true)
         print(searchTextFiled.text!)
@@ -47,6 +48,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             weatherManerger.fetchWeather(cityName: city)
         }
         searchTextFiled.text = ""
+    }
+    
+    func didUpdateWeather(weather: WeatherModel) {
+        let name = weather.cityName
+        print(name)
     }
     
 }
