@@ -34,6 +34,9 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="location.viewfinder" catalog="system"/>
+                                                <connections>
+                                                    <action selector="getLoction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tz3-90-QMg"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜尋你想要查的城市" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-2X-py0">
                                                 <rect key="frame" x="50" y="0.0" width="264" height="40"/>
@@ -121,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="88.392857142857139"/>
+            <point key="canvasLocation" x="-2828" y="99"/>
         </scene>
     </scenes>
     <resources>
